@@ -22,6 +22,6 @@ module.exports = {
     url: process.env.POKE_URL || 'https://pokeapi.co/api/v2/'
   },
   server: {
-    port: 80
+    port: process.env.PORT || 8080
   }
 }
