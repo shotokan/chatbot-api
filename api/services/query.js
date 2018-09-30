@@ -14,17 +14,15 @@ const axios = require('axios')
 const config = require('../../config/')
 
 class QueryService {
-  async query(soldaiResp={}) {
+  async query (soldaiResp = {}) {
     debug(`Service: ${chalk.green('quering soldai')}`)
     let pok = config.pokeApi.url
     // Valida el patrón de respuesta asignado en soldai para cuando se tiene un elemento válido
-    if (soldaiResp.current_response.message.indexOf("::") !== -1) {
-
+    if (soldaiResp.current_response.message.indexOf('::') !== -1) {
       // Si el patrón existe se hace un split para dividir y tener en el índice 0 el número asignado a un pokemon
       // y el índice 1 para la característica.
-      let data = soldaiResp.current_response.message.split("::")
+      let data = soldaiResp.current_response.message.split('::')
       if (data.length < 1) {
-        console.log('Ha habido un problema.')
         return 'Por el momento no puedo darte la información. Intenta de nuevo mas tarde.'
       }
 
@@ -32,7 +30,7 @@ class QueryService {
       // Se realiza la consulta a la api pokemon
       try {
         pokResp = await axios.get(`${pok}/pokemon/${data[0]}`)
-      } catch(err) {
+      } catch (err) {
         return 'Me disculpo pero he tenido un problema al consultar tu pregunta. Intenta de nuevo mas tarde.'
       }
       let message = ''
@@ -56,7 +54,7 @@ class QueryService {
           break
         default:
           // Si el usuario pregunta por un número, se le devuelve el nombre del pokemon y un link de su imagen
-          if (data[1].trim() !== "") {
+          if (data[1].trim() !== '') {
             message = `${data[1].trim()}, puedes ver su imagen en el siguiente link: ${pokResp.data.sprites.back_default}`
           } else {
             // Si no se ha obtenido una caracteristica válida por algún error, se devuelve una respuesta por default.
@@ -68,13 +66,12 @@ class QueryService {
       } else {
         return 'Una disculpa, pero por el momento no podré darte la información. Intenta mas tarde.'
       }
-      
     }
     // En caso de que no exista el patrón del elemento en soldai, se devuelve la respuesta del hermes.
     return soldaiResp.current_response.message
   }
 
-  getTypes(data) {
+  getTypes (data) {
     let posiblesSingularAnswers = [
       'Es tipo',
       'Tipo',
@@ -91,19 +88,17 @@ class QueryService {
     data.forEach(obj => {
       counter++
       resp += ` ${obj.type.name}`
-      if (counter === typesAmount-1) {
-        console.log('ultimo')
+      if (counter === typesAmount - 1) {
         resp += ' y'
       } else if (typesAmount > 1 && counter !== typesAmount) {
         resp += ','
       }
-      console.log(obj.type.name)
     })
     if (counter > 0) resp += '.'
     return resp
   }
 
-  getAbilities(data) {
+  getAbilities (data) {
     let resp = ''
     let posiblesPluralAnswers = [
       'Sus habilidades son los siguientes:',
@@ -132,7 +127,7 @@ class QueryService {
     data.forEach(obj => {
       counter++
       resp += ` ${obj.ability.name}`
-      if (counter === typesAmount-1) {
+      if (counter === typesAmount - 1) {
         resp += ' y'
       } else if (typesAmount > 1 && counter !== typesAmount) {
         resp += ','
@@ -142,7 +137,7 @@ class QueryService {
     return resp
   }
 
-  getMoves(data) {
+  getMoves (data) {
     let posiblesPluralAnswers = [
       'Sus movimientos son los siguientes:',
       'Los movimientos pueden ser:',
@@ -159,7 +154,6 @@ class QueryService {
     ]
     let answerIndex = Math.floor(Math.random() * 5)
     let resp = ''
-    console.log(answerIndex)
     const typesAmount = data.length
     let counter = 0
     if (typesAmount > 1) {
@@ -170,7 +164,7 @@ class QueryService {
     data.forEach(obj => {
       counter++
       resp += ` ${obj.move.name}`
-      if (counter === typesAmount-1) {
+      if (counter === typesAmount - 1) {
         resp += ' y'
       } else if (typesAmount > 1 && counter !== typesAmount) {
         resp += ','
@@ -180,7 +174,7 @@ class QueryService {
     return resp
   }
 
-  getStats(data) {
+  getStats (data) {
     let posiblesPluralAnswers = [
       'Sus estadísticas son las siguientes:',
       'Aqui puedes ver sus estadísticas->',
@@ -198,7 +192,7 @@ class QueryService {
     data.forEach(obj => {
       counter++
       resp += ` ${obj.stat.name}: ${obj.base_stat}%`
-      if (counter === typesAmount-1) {
+      if (counter === typesAmount - 1) {
         resp += ' y'
       } else if (typesAmount > 1 && counter !== typesAmount) {
         resp += ','

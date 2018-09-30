@@ -4,7 +4,7 @@
   "description": "3er reto de reclutamiento para programadores.",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=developing node ./api/server.js",
+    "start": "NODE_ENV=production node ./api/server.js",
     "lint": "standard",
     "start-dev": "DEBUG=soldai:* NODE_ENV=developing nodemon ./api/server.js",
     "test": "DEBUG=soldai:* NODE_ENV=testing nyc ava tests/ --verbose"
@@ -17,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.25.0",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.4",
     "nyc": "^13.0.1",
     "sinon": "^6.3.4",

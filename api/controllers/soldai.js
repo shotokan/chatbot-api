@@ -27,7 +27,7 @@ class SoldaiController {
     } catch (err) {
       debug(`Query Soldai Controller Error: ${chalk.red(err.message)}`)
       res.status(400).send(response.error('Internal Problem', 400, uri, err.message))
-    } 
+    }
   }
 }
 
