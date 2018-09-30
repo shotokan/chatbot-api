@@ -1,6 +1,6 @@
 ## Estructura
 
-**tests**: contiene los tests que prueban las funcionalidades de la capa de servicios, y los de integración de todos los componentes para la api.
+**__test__**: contiene los tests que prueban las funcionalidades de la capa de servicios, y los de integración de todos los componentes para la api.
 
 **config**: contiene un archivo con la configuración necesaria para que el servicio pueda trabajar.
 
@@ -17,8 +17,6 @@
 **api.utils**: contiene algunas funciones de ayuda.
 
 **Dockerfile**: contiene las intrucciones para generar una imagen docker.
-
-**docker-compose**: Archivo con las configuraciones para levantar el contenedor de postgresql y el del proyecto.
 
 ### API
 
