@@ -69,7 +69,8 @@ Ejemplo respuesta:
 }
 ```
 
-> GET /v1/ping que tipo charmander
+
+> GET /v1/ping
 
 Ejemplo respuesta:
 
