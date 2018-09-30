@@ -68,3 +68,13 @@ Ejemplo respuesta:
     "code": 200
 }
 ```
+
+> GET /v1/ping que tipo charmander
+
+Ejemplo respuesta:
+
+```
+{
+    "message": "pong"
+}
+```
