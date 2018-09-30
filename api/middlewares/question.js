@@ -10,9 +10,16 @@ const debug = require('debug')('soldai:api:services')
 const chalk = require('chalk')
 const axios = require('axios')
 const config = require('../../config/')
+const response = require('../utils/response')
+const utils = require('../utils')
 
 const asyncQuestionMiddleware = async (req, res, next) => {
   debug(`QuestionMiddleware: Consultando a soldai...`)
+  if (!req.query.question) {
+    const uri = utils.getURI(req.protocol, req.originalUrl, req.get('host'))
+    const message = 'No has realizado una pregunta. Para poder brindarte información debes realizar una pregunta de las características de un pokémon.'
+    return res.send(response.success({ message }, 200, uri))
+  }
   const question = req.query.question
   let path = `?key=${config.apiSoldai.key}&log=1&question=${question}`
   let soldaiResp = null

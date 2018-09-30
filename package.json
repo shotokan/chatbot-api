@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node ./api/server.js",
     "lint": "standard",
     "start-dev": "DEBUG=soldai:* NODE_ENV=developing nodemon ./api/server.js",
-    "test": "DEBUG=soldai:* NODE_ENV=testing nyc ava tests/ --verbose"
+    "test": "node ./node_modules/jest/bin/jest"
   },
   "keywords": [
     "soldai",
