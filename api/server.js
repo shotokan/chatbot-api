@@ -1,5 +1,12 @@
 'use strict'
 
+ /**
+ * author: ivan sabido
+ * date: 28/09/2018
+ * email: <isc_86@hotmail.com>
+ * description: Archivo que ejecuta el servidor de express.
+ */
+
 /**
  * third party libraries
  */
@@ -11,6 +18,11 @@ const cors = require('cors')
 const chalk = require('chalk')
 const routes = require('./routes/v1')
 const debug = require('debug')('soldai:api:server')
+
+/**
+ * project libraries
+ */
+
 const utils = require('./utils')
 const response = require('./utils/response')
 
@@ -63,9 +75,3 @@ server.listen(config.server.port, () => {
     process.exit(1)
   }
 })
-
-// function handleFatalError (err) {
-//   console.error(`${chalk.red('[fatal error]')} ${err.message}`)
-//   console.error(err.stack)
-//   process.exit(1)
-// }

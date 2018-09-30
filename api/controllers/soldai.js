@@ -2,9 +2,9 @@
 
 /**
  * author: ivan sabido
- * date: 28/06/2018
+ * date: 28/09/2018
  * email: <isc_86@hotmail.com>
- * description: Controlador para poder realizar health check del servicio.
+ * description: Controlador que tiene las funciones para realizar evaluar la pregunta.
  */
 
 const debug = require('debug')('soldai:api:controller:soldai')

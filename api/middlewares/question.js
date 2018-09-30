@@ -14,12 +14,11 @@ const config = require('../../config/')
 const asyncQuestionMiddleware = async (req, res, next) => {
   debug(`QuestionMiddleware: Consultando a soldai...`)
   const question = req.query.question
-  let url = config.apiSoldai.url
-  let key = config.apiSoldai.key
-  let path = `?key=${key}&log=1&question=${question}`
+  let path = `?key=${config.apiSoldai.key}&log=1&question=${question}`
   let soldaiResp = null
+  let url = `${config.apiSoldai.url}/${path}`
   try {
-    soldaiResp = await axios.get(encodeURI(`${url}${path}`))
+    soldaiResp = await axios.get(encodeURI(url))
     // Se crea una propiedad en el objeto request y se le asigna la respuesta de soldai
     if (!soldaiResp.data) {
       throw Error('No se obtuvo una respuesta.')
@@ -27,6 +26,7 @@ const asyncQuestionMiddleware = async (req, res, next) => {
     req.soldaiAnswer = soldaiResp.data
     next()
   } catch (err) {
+    // Si no se puede realizar la comuncación o hay algún problema con la api, se regresa una respuesta genérica.
     debug(`QuestionMiddleware Error: ${chalk.red(err.message)}`)
     return next(Error('Me disculpo pero he tenido un problema al consultar tu pregunta. Intenta de nuevo mas tarde.'))
   }

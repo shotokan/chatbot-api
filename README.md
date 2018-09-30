@@ -1,7 +1,5 @@
 ## Estructura
 
-**db**: contiene los archivos de configuracion para la bd, se usa sequelize.
-
 **tests**: contiene los tests que prueban las funcionalidades de la capa de servicios, y los de integración de todos los componentes para la api.
 
 **config**: contiene un archivo con la configuración necesaria para que el servicio pueda trabajar.
@@ -21,3 +19,20 @@
 **Dockerfile**: contiene las intrucciones para generar una imagen docker.
 
 **docker-compose**: Archivo con las configuraciones para levantar el contenedor de postgresql y el del proyecto.
+
+### API
+
+> GET /v1/query?question=de que tipo charmander
+
+Ejemplo respuesta:
+
+```
+{
+    "request": 1538325670728,
+    "url": "http://localhost:3000/v1/query?question=de que tipo charmander",
+    "data": {
+        "message": "Es de tipo fire."
+    },
+    "code": 200
+}
+```

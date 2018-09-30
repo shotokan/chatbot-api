@@ -1,7 +1,8 @@
 'use strict'
-/**
+
+ /**
  * author: ivan sabido
- * date: 28/06/2018
+ * date: 28/09/2018
  * email: <isc_86@hotmail.com>
  * description: Rutas con sus respectivos controadores para el path ping.
  */
