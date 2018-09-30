@@ -1,4 +1,4 @@
-Reto
+## Reto
 
 
 Primero creé una cuenta de soldai, esto con el fin de poder revisar el panel y entender la forma en la que se usa el api.
