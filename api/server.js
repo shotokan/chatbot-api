@@ -12,7 +12,8 @@
  */
 const app = require('./app')
 const http = require('http')
-
+const chalk = require('chalk')
+const debug = require('debug')('soldai:api:server')
 /**
  * server configuration
  */
@@ -24,6 +25,7 @@ const environment = process.env.NODE_ENV
 
 // server listening
 server.listen(config.server.port, () => {
+  debug(`Server Running on port: ${chalk.cyan(config.server.port)}`)
   if (environment !== 'production' &&
     environment !== 'developing' &&
     environment !== 'testing'
