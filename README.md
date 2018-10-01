@@ -1,5 +1,12 @@
 ## Reto
 
+URL: https://chatbot-soldai.herokuapp.com/
+
+Instrucciones docker:
+
+docker build --no-cache -t ms-soldai .
+docker run -p 3000:3000 -d --name ms-soldai ms-soldai
+
 
 Primero creé una cuenta de soldai, esto con el fin de poder revisar el panel y entender la forma en la que se usa el api.
 Una vez creada la cuenta, estuve revisando las diferentes secciones, con la ayuda de su tour
