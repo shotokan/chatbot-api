@@ -86,3 +86,5 @@ Ejemplo respuesta:
     "message": "pong"
 }
 ```
+
+@@api
